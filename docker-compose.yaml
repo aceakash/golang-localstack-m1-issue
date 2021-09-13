@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+    depends_on:
+      - localstack
+    links:
+      - localstack
+
+  localstack:
+    image: localstack/localstack:0.12.16
+    environment:
+      SERVICES: 's3'
+    expose:
+      - 4566
